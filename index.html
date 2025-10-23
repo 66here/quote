@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quote Widget</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f7f9fc;
+      background: transparent; /* penting: transparan! */
       color: #111;
       margin: 0;
       padding: 0;
@@ -20,10 +20,11 @@
     }
 
     .quote-card {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.1); /* transparan lembut */
+      backdrop-filter: blur(8px);
       padding: 24px 28px;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       max-width: 360px;
       text-align: center;
       position: relative;
@@ -34,6 +35,7 @@
       font-size: 16px;
       line-height: 1.5;
       margin: 0;
+      color: #fff; /* biar terlihat di dark mode */
       opacity: 1;
       transition: opacity 0.3s ease-in-out;
     }
@@ -46,7 +48,7 @@
       right: 12px;
       cursor: pointer;
       padding: 6px;
-      opacity: 0.6;
+      opacity: 0.7;
       transition: opacity 0.2s;
     }
 
@@ -57,7 +59,7 @@
     .refresh-btn svg {
       width: 20px;
       height: 20px;
-      fill: #333;
+      fill: #fff; /* putih agar cocok di dark mode */
     }
   </style>
 </head>
@@ -73,11 +75,35 @@
 
   <script>
     const quotes = [
-      "Happiness depends upon ourselves.",
-      "Act as if what you do makes a difference. It does.",
-      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-      "Keep your face always toward the sunshine—and shadows will fall behind you.",
-      "Believe you can and you're halfway there."
+      "Growth isn’t linear — it’s full of noise, but still trending upward.",
+      "We all start as rough data — learning is the process of cleaning ourselves.",
+      "Not every variable needs to be controlled — some randomness makes life meaningful.",
+      "Even when p < 0.05, life doesn’t always go as expected.",
+      "Each day adds a new data point — someday the trend will make sense.",
+      "Don’t delete your outliers — sometimes they define who you are.",
+      "Learning is like regression — you minimize the loss, not eliminate it.",
+      "The more I learn, the wider my confidence interval becomes — and that’s okay.",
+      "Some days you’re the mean, some days the variance — both are needed for balance.",
+      "Keep iterating — every version of you is a better fit than before.",
+      "Wisdom is like Bayesian inference — updating beliefs with every piece of evidence.",
+      "You can’t control the distribution, but you can choose how to sample from it.",
+      "Even noise contains truth, if you listen long enough.",
+      "Don’t rush convergence — meaningful models take time to train.",
+      "Be your own analyst — interpret your life with compassion, not bias.",
+      "Your past mistakes are just data — use them to update your model.",
+      "Don’t overfit to others’ expectations — generalize to your own purpose.",
+      "Confidence comes not from certainty, but from continuous testing.",
+      "Even when results aren’t significant, the process still matters.",
+      "You can’t normalize everything — some differences are meant to stay.",
+      "Variance without direction is chaos; direction without variance is stagnation.",
+      "Every iteration refines you — trust the process of reparameterization.",
+      "Curiosity is the true optimizer — it keeps the learning rate alive.",
+      "Your worth isn’t a single metric — it’s a multidimensional measure.",
+      "Some hypotheses fail, but every failure narrows the search space.",
+      "Don’t be afraid of missing values — growth fills the gaps.",
+      "Progress isn’t binary — even partial improvement is signal.",
+      "Life’s not a closed-form solution — sometimes you just need to approximate.",
+      "The goal isn’t perfection, it’s convergence toward something better."
     ];
 
     const quoteText = document.getElementById("quoteText");
@@ -93,7 +119,7 @@
     }
 
     refreshBtn.addEventListener("click", showRandomQuote);
-    showRandomQuote(); // tampilkan quote pertama
+    showRandomQuote();
   </script>
 </body>
 </html>
