@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data-Driven Quotes</title>
+<style>
+  body {
+    background-color: #191919;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .quote-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+  }
+
+  h5 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .refresh {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #aaa;
+    transition: color 0.2s ease;
+  }
+
+  .refresh:hover {
+    color: #fff;
+  }
+
+  /* animasi fade untuk transisi kutipan */
+  .fade {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+</style>
+</head>
+
+<body>
+  <div class="quote-box">
+    <h5 id="quoteText"></h5>
+    <div class="refresh" id="refreshQuote">🔄 Refresh Quote</div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Growth isn’t linear — it’s full of noise, but still trending upward.",
+      "We all start as rough data — learning is the process of cleaning ourselves.",
+      "Not every variable needs to be controlled — some randomness makes life meaningful.",
+      "Even when p < 0.05, life doesn’t always go as expected.",
+      "Each day adds a new data point — someday the trend will make sense.",
+      "Don’t delete your outliers — sometimes they define who you are.",
+      "Learning is like regression — you minimize the loss, not eliminate it.",
+      "The more I learn, the wider my confidence interval becomes — and that’s okay.",
+      "Some days you’re the mean, some days the variance — both are needed for balance.",
+      "Keep iterating — every version of you is a better fit than before.",
+      "Wisdom is like Bayesian inference — updating beliefs with every piece of evidence.",
+      "You can’t control the distribution, but you can choose how to sample from it.",
+      "Even noise contains truth, if you listen long enough.",
+      "Don’t rush convergence — meaningful models take time to train.",
+      "Be your own analyst — interpret your life with compassion, not bias.",
+      "Your past mistakes are just data — use them to update your model.",
+      "Don’t overfit to others’ expectations — generalize to your own purpose.",
+      "Confidence comes not from certainty, but from continuous testing.",
+      "Even when results aren’t significant, the process still matters.",
+      "You can’t normalize everything — some differences are meant to stay.",
+      "Variance without direction is chaos; direction without variance is stagnation.",
+      "Every iteration refines you — trust the process of reparameterization.",
+      "Curiosity is the true optimizer — it keeps the learning rate alive.",
+      "Your worth isn’t a single metric — it’s a multidimensional measure.",
+      "Some hypotheses fail, but every failure narrows the search space.",
+      "Don’t be afraid of missing values — growth fills the gaps.",
+      "Progress isn’t binary — even partial improvement is signal.",
+      "Life’s not a closed-form solution — sometimes you just need to approximate.",
+      "The goal isn’t perfection, it’s convergence toward something better."
+    ];
+
+    const quoteEl = document.getElementById("quoteText");
+    const refreshBtn = document.getElementById("refreshQuote");
+
+    function showRandomQuote() {
+      // animasi fade-out
+      quoteEl.classList.add("fade");
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quoteEl.textContent = quotes[randomIndex];
+        // animasi fade-in
+        quoteEl.classList.remove("fade");
+      }, 400);
+    }
+
+    // tampilkan kutipan pertama saat halaman dibuka
+    showRandomQuote();
+
+    // tombol refresh untuk kutipan baru
+    refreshBtn.addEventListener("click", showRandomQuote);
+  </script>
+</body>
+</html>
